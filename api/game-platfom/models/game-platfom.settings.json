@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "game_platfoms",
+  "info": {
+    "name": "GamePlatfom"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "games": {
+      "via": "game_platfom",
+      "collection": "game"
+    }
+  }
+}

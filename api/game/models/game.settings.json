@@ -1,0 +1,61 @@
+{
+  "connection": "default",
+  "collectionName": "games",
+  "info": {
+    "name": "game"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "GameId": {
+      "type": "string",
+      "required": true
+    },
+    "priority": {
+      "type": "integer",
+      "default": 300
+    },
+    "category": {
+      "model": "category",
+      "via": "games"
+    },
+    "isHot": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": true
+    },
+    "titleImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "backgroundImages": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true
+    },
+    "descripton": {
+      "type": "text",
+      "default": "Description"
+    },
+    "game_platfom": {
+      "model": "game-platfom",
+      "via": "games"
+    }
+  }
+}
