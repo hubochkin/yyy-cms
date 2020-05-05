@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "new_game_types",
+  "info": {
+    "name": "NewGameType"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "category": {
+      "via": "new_game_types",
+      "model": "category"
+    },
+    "provider": {
+      "type": "string"
+    }
+  }
+}

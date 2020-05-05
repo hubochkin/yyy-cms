@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/new-games",
+      "handler": "new-game.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/new-games/count",
+      "handler": "new-game.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/new-games/:id",
+      "handler": "new-game.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/new-games",
+      "handler": "new-game.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/new-games/:id",
+      "handler": "new-game.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/new-games/:id",
+      "handler": "new-game.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

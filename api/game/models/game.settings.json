@@ -22,8 +22,8 @@
       "default": 300
     },
     "category": {
-      "model": "category",
-      "via": "games"
+      "via": "games",
+      "model": "category"
     },
     "isHot": {
       "type": "boolean",

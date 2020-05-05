@@ -1,0 +1,53 @@
+{
+  "info": {
+    "name": "NewGame"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "category": {
+      "model": "category",
+      "via": "new_games"
+    },
+    "has_freespins": {
+      "type": "boolean"
+    },
+    "feature_group": {
+      "type": "string"
+    },
+    "devices": {
+      "type": "json"
+    },
+    "payout": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "volatility_rating": {
+      "type": "string"
+    },
+    "hd": {
+      "type": "boolean"
+    },
+    "restrictions": {
+      "type": "json"
+    }
+  },
+  "connection": "default",
+  "collectionName": "new_games"
+}

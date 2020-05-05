@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ipsdomains",
+      "handler": "ipsdomains.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ipsdomains/count",
+      "handler": "ipsdomains.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ipsdomains/:id",
+      "handler": "ipsdomains.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ipsdomains",
+      "handler": "ipsdomains.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ipsdomains/:id",
+      "handler": "ipsdomains.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ipsdomains/:id",
+      "handler": "ipsdomains.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

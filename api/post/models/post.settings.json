@@ -1,0 +1,29 @@
+{
+  "info": {
+    "name": "Post"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Text": {
+      "type": "richtext"
+    },
+    "Image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "category": {
+      "model": "category",
+      "via": "posts"
+    }
+  },
+  "connection": "default",
+  "collectionName": "posts"
+}

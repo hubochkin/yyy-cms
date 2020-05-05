@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "ipsdomains",
+  "info": {
+    "name": "ipsdomains"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Link": {
+      "type": "string"
+    },
+    "rootlink": {
+      "model": "rootlink",
+      "via": "ipsdomain"
+    }
+  }
+}

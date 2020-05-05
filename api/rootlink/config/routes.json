@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/rootlinks",
+      "handler": "rootlink.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rootlinks/count",
+      "handler": "rootlink.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rootlinks/:id",
+      "handler": "rootlink.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/rootlinks",
+      "handler": "rootlink.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/rootlinks/:id",
+      "handler": "rootlink.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/rootlinks/:id",
+      "handler": "rootlink.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

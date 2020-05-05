@@ -13,8 +13,26 @@
       "type": "string"
     },
     "games": {
+      "collection": "game",
+      "via": "category"
+    },
+    "new_game_types": {
+      "collection": "new-game-type",
+      "via": "category"
+    },
+    "icon": {
+      "type": "richtext"
+    },
+    "icons": {
+      "type": "json"
+    },
+    "new_games": {
       "via": "category",
-      "collection": "game"
+      "collection": "new-game"
+    },
+    "posts": {
+      "via": "category",
+      "collection": "post"
     }
   }
 }

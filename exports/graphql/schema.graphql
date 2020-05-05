@@ -1,6 +1,11 @@
 type Category {
   name: String
+  icon: String
+  icons: JSON
   games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  new_game_types(sort: String, limit: Int, start: Int, where: JSON): [NewGameType]
+  new_games(sort: String, limit: Int, start: Int, where: JSON): [NewGame]
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
@@ -9,6 +14,11 @@ type Category {
 input CategoryInput {
   name: String
   games: [ID]
+  new_game_types: [ID]
+  icon: String
+  icons: JSON
+  new_games: [ID]
+  posts: [ID]
 }
 
 input createCategoryInput {
@@ -35,12 +45,52 @@ type createGamePlatfomPayload {
   gamePlatfom: GamePlatfom
 }
 
+input createIpsdomainInput {
+  data: IpsdomainInput
+}
+
+type createIpsdomainPayload {
+  ipsdomain: Ipsdomains
+}
+
+input createNewGameInput {
+  data: NewGameInput
+}
+
+type createNewGamePayload {
+  newGame: NewGame
+}
+
+input createNewGameTypeInput {
+  data: NewGameTypeInput
+}
+
+type createNewGameTypePayload {
+  newGameType: NewGameType
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
 input createRoleInput {
   data: RoleInput
 }
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createRootlinkInput {
+  data: RootlinkInput
+}
+
+type createRootlinkPayload {
+  rootlink: Rootlink
 }
 
 input createUserInput {
@@ -89,12 +139,52 @@ type deleteGamePlatfomPayload {
   gamePlatfom: GamePlatfom
 }
 
+input deleteIpsdomainInput {
+  where: InputID
+}
+
+type deleteIpsdomainPayload {
+  ipsdomain: Ipsdomains
+}
+
+input deleteNewGameInput {
+  where: InputID
+}
+
+type deleteNewGamePayload {
+  newGame: NewGame
+}
+
+input deleteNewGameTypeInput {
+  where: InputID
+}
+
+type deleteNewGameTypePayload {
+  newGameType: NewGameType
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
+
 input deleteRoleInput {
   where: InputID
 }
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteRootlinkInput {
+  where: InputID
+}
+
+type deleteRootlinkPayload {
+  rootlink: Rootlink
 }
 
 input deleteUserInput {
@@ -108,6 +198,11 @@ type deleteUserPayload {
 input editCategoryInput {
   name: String
   games: [ID]
+  new_game_types: [ID]
+  icon: String
+  icons: JSON
+  new_games: [ID]
+  posts: [ID]
 }
 
 input editFileInput {
@@ -142,12 +237,51 @@ input editGamePlatfomInput {
   games: [ID]
 }
 
+input editIpsdomainInput {
+  Link: String
+  rootlink: ID
+}
+
+input editNewGameInput {
+  title: String
+  identifier: String
+  provider: String
+  producer: String
+  category: ID
+  has_freespins: Boolean
+  feature_group: String
+  devices: JSON
+  payout: String
+  description: String
+  volatility_rating: String
+  hd: Boolean
+  restrictions: JSON
+}
+
+input editNewGameTypeInput {
+  Title: String
+  identifier: String
+  category: ID
+  provider: String
+}
+
+input editPostInput {
+  Title: String
+  Text: String
+  Image: [ID]
+  category: ID
+}
+
 input editRoleInput {
   name: String
   description: String
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editRootlinkInput {
+  ipsdomain: ID
 }
 
 input editUserInput {
@@ -222,6 +356,19 @@ input InputID {
   id: ID!
 }
 
+input IpsdomainInput {
+  Link: String
+  rootlink: ID
+}
+
+type Ipsdomains {
+  Link: String
+  rootlink: Rootlink
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -230,7 +377,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | GamePlatfom | createGamePlatfomPayload | updateGamePlatfomPayload | deleteGamePlatfomPayload | Game | createGamePayload | updateGamePayload | deleteGamePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | Category | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | GamePlatfom | createGamePlatfomPayload | updateGamePlatfomPayload | deleteGamePlatfomPayload | Game | createGamePayload | updateGamePayload | deleteGamePayload | Ipsdomains | createIpsdomainPayload | updateIpsdomainPayload | deleteIpsdomainPayload | NewGameType | createNewGameTypePayload | updateNewGameTypePayload | deleteNewGameTypePayload | NewGame | createNewGamePayload | updateNewGamePayload | deleteNewGamePayload | Post | createPostPayload | updatePostPayload | deletePostPayload | Rootlink | createRootlinkPayload | updateRootlinkPayload | deleteRootlinkPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createCategory(input: createCategoryInput): createCategoryPayload
@@ -242,6 +389,21 @@ type Mutation {
   createGame(input: createGameInput): createGamePayload
   updateGame(input: updateGameInput): updateGamePayload
   deleteGame(input: deleteGameInput): deleteGamePayload
+  createIpsdomain(input: createIpsdomainInput): createIpsdomainPayload
+  updateIpsdomain(input: updateIpsdomainInput): updateIpsdomainPayload
+  deleteIpsdomain(input: deleteIpsdomainInput): deleteIpsdomainPayload
+  createNewGameType(input: createNewGameTypeInput): createNewGameTypePayload
+  updateNewGameType(input: updateNewGameTypeInput): updateNewGameTypePayload
+  deleteNewGameType(input: deleteNewGameTypeInput): deleteNewGameTypePayload
+  createNewGame(input: createNewGameInput): createNewGamePayload
+  updateNewGame(input: updateNewGameInput): updateNewGamePayload
+  deleteNewGame(input: deleteNewGameInput): deleteNewGamePayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+  createRootlink(input: createRootlinkInput): createRootlinkPayload
+  updateRootlink(input: updateRootlinkInput): updateRootlinkPayload
+  deleteRootlink(input: deleteRootlinkInput): deleteRootlinkPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -266,6 +428,75 @@ type Mutation {
   register(input: UserInput!): UsersPermissionsLoginPayload!
 }
 
+type NewGame {
+  title: String
+  identifier: String
+  provider: String
+  producer: String
+  category: Category
+  has_freespins: Boolean
+  feature_group: String
+  devices: JSON
+  payout: String
+  description: String
+  volatility_rating: String
+  hd: Boolean
+  restrictions: JSON
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input NewGameInput {
+  title: String
+  identifier: String
+  provider: String
+  producer: String
+  category: ID
+  has_freespins: Boolean
+  feature_group: String
+  devices: JSON
+  payout: String
+  description: String
+  volatility_rating: String
+  hd: Boolean
+  restrictions: JSON
+}
+
+type NewGameType {
+  Title: String
+  identifier: String
+  category: Category
+  provider: String
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input NewGameTypeInput {
+  Title: String
+  identifier: String
+  category: ID
+  provider: String
+}
+
+type Post {
+  Title: String
+  Text: String
+  category: Category
+  Image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input PostInput {
+  Title: String
+  Text: String
+  Image: [ID]
+  category: ID
+}
+
 type Query {
   category(id: ID!): Category
   categories(sort: String, limit: Int, start: Int, where: JSON): [Category]
@@ -273,6 +504,16 @@ type Query {
   gamePlatfoms(sort: String, limit: Int, start: Int, where: JSON): [GamePlatfom]
   game(id: ID!): Game
   games(sort: String, limit: Int, start: Int, where: JSON): [Game]
+  ipsdomain(id: ID!): Ipsdomains
+  ipsdomains(sort: String, limit: Int, start: Int, where: JSON): [Ipsdomains]
+  newGameType(id: ID!): NewGameType
+  newGameTypes(sort: String, limit: Int, start: Int, where: JSON): [NewGameType]
+  newGame(id: ID!): NewGame
+  newGames(sort: String, limit: Int, start: Int, where: JSON): [NewGame]
+  post(id: ID!): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  rootlink(id: ID!): Rootlink
+  rootlinks(sort: String, limit: Int, start: Int, where: JSON): [Rootlink]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -291,6 +532,17 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+type Rootlink {
+  ipsdomain: Ipsdomains
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input RootlinkInput {
+  ipsdomain: ID
 }
 
 """A time string with format: HH:mm:ss.SSS"""
@@ -323,6 +575,42 @@ type updateGamePlatfomPayload {
   gamePlatfom: GamePlatfom
 }
 
+input updateIpsdomainInput {
+  where: InputID
+  data: editIpsdomainInput
+}
+
+type updateIpsdomainPayload {
+  ipsdomain: Ipsdomains
+}
+
+input updateNewGameInput {
+  where: InputID
+  data: editNewGameInput
+}
+
+type updateNewGamePayload {
+  newGame: NewGame
+}
+
+input updateNewGameTypeInput {
+  where: InputID
+  data: editNewGameTypeInput
+}
+
+type updateNewGameTypePayload {
+  newGameType: NewGameType
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
+}
+
 input updateRoleInput {
   where: InputID
   data: editRoleInput
@@ -330,6 +618,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateRootlinkInput {
+  where: InputID
+  data: editRootlinkInput
+}
+
+type updateRootlinkPayload {
+  rootlink: Rootlink
 }
 
 input updateUserInput {
